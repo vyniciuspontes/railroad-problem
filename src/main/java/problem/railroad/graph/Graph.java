@@ -10,6 +10,9 @@ import java.util.Set;
 
 public class Graph {
 
+	/**
+	 * Map representing nodes, his neighbors and they weight
+	 */
 	private Map<String, HashMap<String, Integer>> nodes;
 
 	public Graph() {
@@ -49,7 +52,12 @@ public class Graph {
 		Map<String, Integer> nodeNeighbors = this.nodes.get(node);
 		return nodeNeighbors.containsKey(neighbor);
 	}
-
+	
+	/**
+	 * Calculates the total distance of a given route
+	 * @param route String array representing a route
+	 * @return Total distance
+	 */
 	public Integer calculateRoute(String[] route) {
 
 		Integer count = 0;
@@ -74,22 +82,33 @@ public class Graph {
 		return count;
 	}
 
-	public Integer calculatePossibleTrips(String startNode, String endNode, Integer pathLimit, boolean exact) {
+	/**
+	 * Calculates the number of possible trips for a given start node and end node
+	 * @param startNode 
+	 * @param endNode
+	 * @param tripLimit Maximum trip limit
+	 * @param exact Set if the calculation should get the exact number of trips set on trip limit
+	 * @return Number of possible trips
+	 */
+	public Integer calculatePossibleTrips(String startNode, String endNode, Integer tripLimit, boolean exact) {
 
 		List<String> visited = new ArrayList<>();
 
 		int pathCount = 0;
 
-		pathCount = calculateTripsUntil(startNode, endNode, visited, pathCount, pathLimit, exact, true);
+		pathCount = calculateTripsUntil(startNode, endNode, visited, pathCount, tripLimit, exact, true);
 
 		return pathCount;
 	}
 
-	public Integer calculatePossibleTrips(String startNode, String endNode, Integer pathLimit) {
+	public Integer calculatePossibleTrips(String startNode, String endNode, Integer tripLimit) {
 
-		return calculatePossibleTrips(startNode, endNode, pathLimit, false);
+		return calculatePossibleTrips(startNode, endNode, tripLimit, false);
 	}
 
+	/**
+	 * calculatePossibleTrips helper function to do the recursive job
+	 */
 	private Integer calculateTripsUntil(String startNode, String endNode, List<String> visited, Integer tripCount,
 			Integer tripLimit, boolean exact, boolean first) {
 
@@ -114,6 +133,13 @@ public class Graph {
 		return tripCount;
 	}
 
+	/**
+	 * Calculates the number of possible routes for a given start node and end node
+	 * @param startNode
+	 * @param endNode
+	 * @param distanceLimit Limit of total distance
+	 * @return Number of possible routes
+	 */
 	public Integer calculateDiferentRoutes(String startNode, String endNode, Integer distanceLimit) {
 
 		int routeCount = 0;
@@ -125,6 +151,9 @@ public class Graph {
 		return routeCount;
 	}
 
+	/**
+	 * calculateDiferentRoutes helper function to do the recursive job
+	 */
 	private Integer calculateDiferentRoutesUntil(String startNode, String endNode, Integer routeCount,
 			LinkedList<Integer> distances, Integer distanceLimit, boolean first) {
 

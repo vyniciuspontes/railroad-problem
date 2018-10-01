@@ -49,13 +49,13 @@ public class GraphTest {
 	}
 	
 	@Test
-	public void countPath1() { 
+	public void countTripCtoC() { 
 		Integer result = graph.calculatePossibleTrips("C", "C", 3);
 		assertEquals(Integer.valueOf(2), result);
 	}
 	
 	@Test
-	public void countPath2() { 
+	public void countTripAtoC() { 
 		Integer result = graph.calculatePossibleTrips("A", "C", 4, true);
 		assertEquals(Integer.valueOf(3), result);
 	}

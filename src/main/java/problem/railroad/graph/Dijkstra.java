@@ -24,6 +24,11 @@ public class Dijkstra {
 		this.graph = graph;
 	}
 
+	/**
+	 * Run the Dijkstra algorithm loop
+	 * 
+	 * @param source Source node
+	 */
 	public void run(String source) {
 		visitedNodes = new HashSet<String>();
 		unvisitedNodes = new HashSet<String>();
@@ -39,10 +44,16 @@ public class Dijkstra {
 			String node = getMin(unvisitedNodes);
 			visitedNodes.add(node);
 			unvisitedNodes.remove(node);
-			findMinimalDistances(node);
+			findMinDistances(node);
 		}
 	}
 
+	/**
+	 * Gather the route from the source to a given target
+	 * 
+	 * @param target Target node
+	 * @return List with the nodes that form the path from source to target
+	 */
 	public LinkedList<String> getPath(String target) {
 		LinkedList<String> path = new LinkedList<String>();
 		String step = target;
@@ -66,7 +77,7 @@ public class Dijkstra {
 		return path;
 	}
 
-	private void findMinimalDistances(String node) {
+	private void findMinDistances(String node) {
 		List<String> adjacentNodes = getNeighbors(node);
 		for (String target : adjacentNodes) {
 
@@ -75,7 +86,6 @@ public class Dijkstra {
 			if (getShortestDistance(target) > distanceFromNode) {
 
 				distance.put(target, getShortestDistance(node) + graph.getDistanceBetweenNeighbor(node, target));
-
 				predecessors.put(target, node);
 				unvisitedNodes.add(target);
 			}

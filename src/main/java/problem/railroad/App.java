@@ -11,9 +11,7 @@ public class App
     public static void main( String[] args )
     {
     	String filePath = "src/main/resources/input.txt";
-    	
     	String noRoutesMessage = "NO SUCH ROUTE";
-    	
 		Graph graph = GraphFactory.generateFromFile(filePath);
 
 		System.out.println(graph.toString());
