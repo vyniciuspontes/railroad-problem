@@ -1,4 +1,4 @@
-package problem.railroad;
+package problem.railroad.graph;
 
 import java.util.ArrayList;
 import java.util.Collections;

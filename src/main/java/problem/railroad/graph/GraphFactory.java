@@ -1,4 +1,4 @@
-package problem.railroad;
+package problem.railroad.graph;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,12 +6,14 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import problem.railroad.exceptions.InvalidFileContentException;
+
 public class GraphFactory {
 
 	static private String regex = "([A-Z])([A-Z])(\\d)";
 	static private Pattern pattern = Pattern.compile(regex);
 
-	static Graph generateFromString(String graphString) {
+	static public Graph generateFromString(String graphString) {
 
 		if (graphString == null || graphString.isEmpty())
 			return null;
@@ -35,7 +37,7 @@ public class GraphFactory {
 		return graph;
 	}
 
-	static Graph generateFromFile(String filePath) {
+	static public Graph generateFromFile(String filePath) {
 
 		File file = new File(filePath);
 		Scanner scanner;
@@ -52,9 +54,9 @@ public class GraphFactory {
 			} else {
 
 				scanner.close();
-				throw new InvalidFileContent("The file " + file.getName() + " has no valid content");
+				throw new InvalidFileContentException("The file " + file.getName() + " has no valid content");
 			}
-		} catch (FileNotFoundException | InvalidFileContent | IllegalArgumentException e) {
+		} catch (FileNotFoundException | InvalidFileContentException | IllegalArgumentException e) {
 			e.printStackTrace();
 			return null;
 		}

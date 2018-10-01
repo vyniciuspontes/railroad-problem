@@ -1,4 +1,4 @@
-package problem.railroad;
+package problem.railroad.graph;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -6,8 +6,8 @@ import static org.junit.Assert.assertNull;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import problem.railroad.Graph;
-import problem.railroad.GraphFactory;
+import problem.railroad.graph.Graph;
+import problem.railroad.graph.GraphFactory;
 
 public class GraphTest {
 

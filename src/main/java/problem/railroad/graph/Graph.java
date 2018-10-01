@@ -1,4 +1,4 @@
-package problem.railroad;
+package problem.railroad.graph;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,11 +11,11 @@ import java.util.Set;
 public class Graph {
 
 	private Map<String, HashMap<String, Integer>> nodes;
-	
+
 	public Graph() {
 		this.nodes = new HashMap<String, HashMap<String, Integer>>();
 	}
-	
+
 	public void addNode(String name) {
 		this.nodes.put(name, new HashMap<>());
 	}
@@ -128,9 +128,8 @@ public class Graph {
 	private Integer calculateDiferentRoutesUntil(String startNode, String endNode, Integer routeCount,
 			LinkedList<Integer> distances, Integer distanceLimit, boolean first) {
 
-		if (startNode.equals(endNode) && !first) {
+		if (startNode.equals(endNode) && !first)
 			routeCount++;
-		}
 
 		for (String node : this.nodes.get(startNode).keySet()) {
 
