@@ -28,7 +28,6 @@ public class Dijkstra {
 		visitedNodes = new HashSet<String>();
 		unvisitedNodes = new HashSet<String>();
 		distance = new HashMap<String, Integer>();
-
 		predecessors = new HashMap<String, String>();
 
 		this.source = source;

@@ -38,7 +38,7 @@ public class App
 		System.out.println("Output #6: " + output6);
 
 		Integer output7 = graph.calculatePossibleTrips("A", "C", 4, true);
-		System.out.println("Output #6: " + output7);
+		System.out.println("Output #7: " + output7);
 		
 		
 		Dijkstra algorithm = new Dijkstra(graph);
@@ -49,8 +49,8 @@ public class App
 				new String[pathAtoC.size()])).toString() : noRoutesMessage;
 		System.out.println("Output #8: " + output8);
 		
-		algorithm.run("C");
-		List<String> pathCtoC = algorithm.getPath("C");
+		algorithm.run("B");
+		List<String> pathCtoC = algorithm.getPath("B");
 		String output9 = pathCtoC != null ? graph.calculateRoute(pathCtoC.toArray(
 				new String[pathCtoC.size()])).toString() : noRoutesMessage;
 		System.out.println("Output #9: " + output9);
