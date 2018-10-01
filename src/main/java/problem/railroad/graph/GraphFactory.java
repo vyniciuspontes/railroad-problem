@@ -31,7 +31,7 @@ public class GraphFactory {
 		}
 
 		if (graph.getNodes().isEmpty()) {
-			throw new IllegalArgumentException("Graph string is not valid");
+			throw new IllegalArgumentException("The string \"" + graphString + "\" is not valid");
 		}
 		
 		return graph;
@@ -54,12 +54,18 @@ public class GraphFactory {
 			} else {
 
 				scanner.close();
-				throw new InvalidFileContentException("The file " + file.getName() + " has no valid content");
+				throw new InvalidFileContentException("The file \"" + file.getName() 
+					+ "\" is empty or has no valid content");
 			}
-		} catch (FileNotFoundException | InvalidFileContentException | IllegalArgumentException e) {
-			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			System.out.println("The file \"" + file.getName() 
+				+ "\" was not found. Make sure that the file is inside folder "
+				+ "railroad-problem/src/main/resources");
 			return null;
+		} catch (InvalidFileContentException | IllegalArgumentException e) {
+			System.out.println(e.getMessage());
 		}
+		return null;
 	}
 
 }

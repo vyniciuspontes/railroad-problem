@@ -8,6 +8,11 @@ public class App {
 		String filePath = "src/main/resources/input.txt";
 		String noRoutesMessage = "NO SUCH ROUTE";
 		Graph graph = GraphFactory.generateFromFile(filePath);
+		
+		if(graph == null) {
+			System.out.println("Closing the program");
+			System.exit(1);
+		}
 
 		System.out.println(graph.toString());
 
