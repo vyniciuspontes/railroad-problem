@@ -10,5 +10,5 @@ To execute the code, at the root folder type:
 
 ```
 mvn package
-mvn exec:java -Dexec.mainClass="problem.railroad.App"
+java -cp target/railroad-1.0-SNAPSHOT.jar problem.railroad.App
 ```
