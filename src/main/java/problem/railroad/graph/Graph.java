@@ -14,6 +14,7 @@ public class Graph {
 	 * Map representing nodes, his neighbors and they weight
 	 */
 	private Map<String, HashMap<String, Integer>> nodes;
+	private Dijkstra algorithm = null;
 
 	public Graph() {
 		this.nodes = new HashMap<String, HashMap<String, Integer>>();
@@ -52,9 +53,10 @@ public class Graph {
 		Map<String, Integer> nodeNeighbors = this.nodes.get(node);
 		return nodeNeighbors.containsKey(neighbor);
 	}
-	
+
 	/**
 	 * Calculates the total distance of a given route
+	 * 
 	 * @param route String array representing a route
 	 * @return Total distance
 	 */
@@ -84,10 +86,12 @@ public class Graph {
 
 	/**
 	 * Calculates the number of possible trips for a given start node and end node
-	 * @param startNode 
+	 * 
+	 * @param startNode
 	 * @param endNode
 	 * @param tripLimit Maximum trip limit
-	 * @param exact Set if the calculation should get the exact number of trips set on trip limit
+	 * @param exact     Set if the calculation should get the exact number of trips
+	 *                  set on trip limit
 	 * @return Number of possible trips
 	 */
 	public Integer calculatePossibleTrips(String startNode, String endNode, Integer tripLimit, boolean exact) {
@@ -135,6 +139,7 @@ public class Graph {
 
 	/**
 	 * Calculates the number of possible routes for a given start node and end node
+	 * 
 	 * @param startNode
 	 * @param endNode
 	 * @param distanceLimit Limit of total distance
@@ -180,6 +185,20 @@ public class Graph {
 	private Integer countTotalDistance(List<Integer> distance) {
 
 		return distance.stream().mapToInt(i -> i.intValue()).sum();
+	}
+
+	public Integer getShortDistance(String startNode, String endNode) {
+
+		if (this.algorithm == null)
+			this.algorithm = new Dijkstra(this);
+
+		algorithm.run(startNode);
+		List<String> path = algorithm.getPath(endNode);
+
+		if (path != null)
+			return this.calculateRoute(path.toArray(new String[path.size()]));
+
+		return null;
 	}
 
 	@Override

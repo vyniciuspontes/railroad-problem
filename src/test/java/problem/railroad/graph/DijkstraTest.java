@@ -33,22 +33,17 @@ public class DijkstraTest {
 	
 	@Test
 	public void testAtoC() {
-    	
-    	this.algorithm.run("A");
-    	
-    	List<String> paths = algorithm.getPath("C");
-    	
-    	assertEquals(Integer.valueOf(9), graph.calculateRoute(paths.toArray(new String[paths.size()])));
+		
+		Integer distance = graph.getShortDistance("A", "C");
+    	assertEquals(Integer.valueOf(9), distance);
 	}
 	
 	@Test
 	public void testBtoB() {
 		    	
-    	this.algorithm.run("B");
+		Integer distance = graph.getShortDistance("B", "B");
     	
-    	List<String> paths = algorithm.getPath("B");
-    	
-    	assertEquals(Integer.valueOf(9), graph.calculateRoute(paths.toArray(new String[paths.size()])));
+    	assertEquals(Integer.valueOf(9), distance);
 	}
 	
 	@Test
@@ -74,20 +69,16 @@ public class DijkstraTest {
 	@Test
 	public void testBtoD() {
 		    	
-    	this.algorithm.run("B");
+		Integer distance = graph.getShortDistance("B", "D");
     	
-    	List<String> paths = algorithm.getPath("D");
-    	
-    	assertEquals(Integer.valueOf(12), graph.calculateRoute(paths.toArray(new String[paths.size()])));
+    	assertEquals(Integer.valueOf(12), distance);
 	}
 	
 	@Test
 	public void testAtoA() {
 		    	
-    	this.algorithm.run("A");
+		Integer distance = graph.getShortDistance("A", "A");
     	
-    	List<String> paths = algorithm.getPath("A");
-    	
-    	assertNull(paths);
+    	assertNull(distance);
 	}
 }

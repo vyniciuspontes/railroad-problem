@@ -58,9 +58,8 @@ public class Dijkstra {
 		LinkedList<String> path = new LinkedList<String>();
 		String step = target;
 
-		if (predecessors.get(step) == null) {
+		if (predecessors.get(step) == null)
 			return null;
-		}
 
 		path.add(step);
 
